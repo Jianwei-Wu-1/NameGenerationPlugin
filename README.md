@@ -13,7 +13,7 @@ This is a proof-of-concept prototype of UNameIt: An uniqueness-based, data-drive
 1. After Gradle build is successful, click the <b>run</b> button on the top function bar.
 2. Another IntelliJ window will pop up and ask to open a project.
 3. Use this window to select the project you want to run the analysis on.
-4. On top menu, click <b>Code</b>, under <b>Code</b> menu, click <b>RunConceptAnalysis</b>.
+4. On top menu, click <b>Code</b>, under <b>Code</b> menu, click <b>RunNameGeneration</b>.
 5. Plugin will automatically start to perform on the selected project, results will be printed in <b>Run console</b>.
 
 ## Contributing
