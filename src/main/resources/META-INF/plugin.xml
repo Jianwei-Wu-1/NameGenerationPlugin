@@ -22,7 +22,7 @@
         <!-- Add your actions here -->
         <action id="RunNameGeneration" class="RunNameGeneration" text="RunNameGeneration"
                 description="RunNameGeneration">
-            <add-to-group group-id="RefactoringMenu" anchor="first"/>
+            <add-to-group group-id="CodeMenu" anchor="first"/>
         </action>
     </actions>
 </idea-plugin>
