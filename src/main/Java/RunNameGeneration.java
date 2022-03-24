@@ -8,7 +8,6 @@ public class RunNameGeneration extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        // TODO: insert action logic here
 
         for (Project project : ProjectManager.getInstance().getOpenProjects()) {
 

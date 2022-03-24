@@ -88,21 +88,6 @@ val exporter = DOTExporter<Concept<PsiMethod, String>>(
     defaultNodeAttributes = defaultNodeAttributes, nodeAttributesProvider = { it.nodeAttributes() }
 )
 
-val escaped: Escaper = Escapers.builder()
-    .addEscape('\n', "")
-    .addEscape('\'', "")
-    .addEscape('\"', "")
-    .addEscape(' ', "")
-    .addEscape(':', "")
-    .addEscape('\\',"")
-    .addEscape(',', ", ")
-    .addEscape('[', "")
-    .addEscape(']', "")
-    .addEscape('{', "")
-    .addEscape('}', "")
-    .addEscape('"', "")
-    .build()
-
 val escaped1: Escaper = Escapers.builder()
     .addEscape('\n', "")
     .addEscape('\'', "")
@@ -141,7 +126,6 @@ fun generateNames(project: Project){
 
 //    val out = PrintStream(FileOutputStream("/Users/wujianwei/desktop/output.txt"))
 //    System.setOut(out)
-    //Note: Special code
 
     val actualTests = HashSet<PsiMethod>()
 
@@ -248,7 +232,7 @@ fun generateNames(project: Project){
 
             println(test.name + " - {")
 
-            var descriptiveName = "test_"
+            var descriptiveName = "test"
 
             val actionFinal = map[test].orEmpty()[0].sorted()
             val predicateFinal = map[test].orEmpty()[1].sorted()
@@ -260,9 +244,29 @@ fun generateNames(project: Project){
 
                     if (actionFinal[i].isNotBlank() && actionFinal[i].isNotEmpty()){
 
+                        actionFinal[i]
+                            .replace(">", "GreaterThan")
+                            .replace("<", "LesserThan")
+                            .replace("=", "Equals")
+                            .replace("+", "And")
+                            .replace("0", "Zero")
+                            .replace("1", "One")
+                            .replace("2", "Two")
+                            .replace("3", "Three")
+                            .replace("4", "Four")
+                            .replace("5", "Five")
+                            .replace("6", "Six")
+                            .replace("7", "Seven")
+                            .replace("8", "Eight")
+                            .replace("9", "Nine")
+                            .replace("new", "")
+                            .replace("New", "")
+
                         if (i == actionFinal.size - 1){
 
                             descriptiveName += decodeStrings(actionFinal[i])
+                                .replace("{", "")
+                                .replace("}", "")
                                 .replace("||", "")
                                 .replace(", ", "")
                                 .replace(",", "")
@@ -274,15 +278,17 @@ fun generateNames(project: Project){
                         }
 
                         descriptiveName += decodeStrings(actionFinal[i])
+                            .replace("{", "")
+                            .replace("}", "")
                             .replace("||", "")
                             .replace(", ", "")
                             .replace(",", "")
                             .replace("&&", "")
-                            .replace("==", "").capitalize() + "_"
+                            .replace("==", "").capitalize()
                     }
                 }
 
-                println("  Descriptive Name: $descriptiveName")
+                println("  Descriptive Name (default to leading test): $descriptiveName")
                 println("} ")
                 continue
             }
@@ -308,6 +314,8 @@ fun generateNames(project: Project){
                             .replace("7", "Seven")
                             .replace("8", "Eight")
                             .replace("9", "Nine")
+                            .replace("new", "")
+                            .replace("New", "")
 
                         predicate = if (predicateFinal[i].startsWith("assert") || predicateFinal[i].startsWith("Assert"))
                             "If.$predicate"
@@ -319,6 +327,8 @@ fun generateNames(project: Project){
                         if (i == predicateFinal.size - 1) {
 
                             descriptiveName += decodeStrings(predicate)
+                                .replace("{", "")
+                                .replace("}", "")
                                 .replace("||", "")
                                 .replace(", ", "")
                                 .replace(",", "")
@@ -330,15 +340,17 @@ fun generateNames(project: Project){
                         }
 
                         descriptiveName += decodeStrings(predicate)
+                            .replace("{", "")
+                            .replace("}", "")
                             .replace("||", "")
                             .replace(", ", "")
                             .replace(",", "")
                             .replace("&&", "")
-                            .replace("==", "").capitalize() + "_"
+                            .replace("==", "").capitalize()
                     }
                 }
 
-                println("  Descriptive Name: $descriptiveName")
+                println("  Descriptive Name (default to leading test): $descriptiveName")
                 println("} ")
                 continue
             }
@@ -349,9 +361,29 @@ fun generateNames(project: Project){
 
                     if (scenarioFinal[i].isNotBlank() && scenarioFinal[i].isNotEmpty()) {
 
+                        scenarioFinal[i]
+                            .replace(">", "GreaterThan")
+                            .replace("<", "LesserThan")
+                            .replace("=", "Equals")
+                            .replace("+", "And")
+                            .replace("0", "Zero")
+                            .replace("1", "One")
+                            .replace("2", "Two")
+                            .replace("3", "Three")
+                            .replace("4", "Four")
+                            .replace("5", "Five")
+                            .replace("6", "Six")
+                            .replace("7", "Seven")
+                            .replace("8", "Eight")
+                            .replace("9", "Nine")
+                            .replace("new", "")
+                            .replace("New", "")
+
                         if (i == scenarioFinal.size - 1) {
 
                             descriptiveName += decodeStrings(scenarioFinal[i])
+                                .replace("{", "")
+                                .replace("}", "")
                                 .replace("||", "")
                                 .replace(", ", "")
                                 .replace(",", "")
@@ -363,15 +395,17 @@ fun generateNames(project: Project){
                         }
 
                         descriptiveName += decodeStrings(scenarioFinal[i])
+                            .replace("{", "")
+                            .replace("}", "")
                             .replace("||", "")
                             .replace(", ", "")
                             .replace(",", "")
                             .replace("&&", "")
-                            .replace("==", "").capitalize() + "_"
+                            .replace("==", "").capitalize()
                     }
                 }
 
-                println("  Descriptive Name: $descriptiveName")
+                println("  Descriptive Name (default to leading test): $descriptiveName")
                 println("} ")
                 continue
             }
