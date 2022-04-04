@@ -1,6 +1,6 @@
 # UNameIt
 
-This is a proof-of-concept prototype of UNameIt: An uniqueness-based, data-driven approach.
+This is a proof-of-concept prototype of UNameIt: An uniqueness-based, data-driven approach for providing descriptive names for JUnit tests.
 
 ## Installation
 
