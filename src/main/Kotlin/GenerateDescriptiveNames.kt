@@ -228,6 +228,8 @@ fun generateNames(project: Project){
 
         println("\nReport: \n")
 
+        println("\nPlease add your attributes to each name by using the candidates above\n")
+
         for (test in testClass.testMethods()) {
 
             println(test.name + " - {")
